@@ -1,0 +1,3 @@
+C:\Users\Admin\EventInsurance_capstoneproj\InsuranceSystem\Insurance.Tests\Services\PolicySuggestionServiceTests.cs(72,17): error CS0117: 'CreatePolicySuggestionDto' does not contain a definition for 'PolicyProductIds' [C:\Users\Admin\EventInsurance_capstoneproj\InsuranceSystem\Insurance.Tests\Insurance.Tests.csproj]
+C:\Users\Admin\EventInsurance_capstoneproj\InsuranceSystem\Insurance.Tests\Services\PolicySuggestionServiceTests.cs(72,17): error CS0117: 'CreatePolicySuggestionDto' does not contain a definition for 'PolicyProductIds' [C:\Users\Admin\EventInsurance_capstoneproj\InsuranceSystem\Insurance.Tests\Insurance.Tests.csproj]
+    1 Error(s)

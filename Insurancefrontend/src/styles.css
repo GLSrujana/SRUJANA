@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+html,
+body {
+    @apply bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 transition-colors duration-500;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    scroll-behavior: smooth;
+
+    /* Sketch-style Background Pattern + Provided Image */
+    background-image:
+        linear-gradient(rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0.95)),
+        url('/assets/bg-sketch.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.dark body {
+    background-image:
+        linear-gradient(rgba(10, 10, 10, 0.96), rgba(10, 10, 10, 0.96)),
+        url('/assets/bg-sketch.png');
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.outfit-font {
+    font-family: 'Outfit', sans-serif;
+}
+
+/* --- Enhanced Design Tokens --- */
+.glass-morphism {
+    @apply bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-2xl;
+}
+
+.glass-morphism-blue {
+    @apply bg-blue-500/10 dark:bg-blue-600/10 backdrop-blur-xl border border-blue-200/20 dark:border-blue-800/20 shadow-xl;
+}
+
+.premium-card {
+    @apply bg-white dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 rounded-3xl;
+}
+
+.blue-gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-yellow-500;
+}
+
+/* --- Modern Scrollbar --- */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-neutral-200 dark:bg-neutral-800 rounded-full border-4 border-solid border-neutral-50 dark:border-neutral-950;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-300 dark:bg-neutral-700;
+}
+
+/* --- Robust Animation System --- */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 25px 5px rgba(59, 130, 246, 0.6);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes pulse-glow-yellow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 25px 5px rgba(234, 179, 8, 0.6);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(1deg); }
+}
+
+@keyframes float-fast {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+@keyframes bg-pan {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-right {
+    animation: fadeInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+    animation: float-fast 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.animate-pulse-glow-yellow {
+    animation: pulse-glow-yellow 2.5s ease-in-out infinite;
+}
+
+.animate-shimmer {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+}
+
+.animate-bg-pan {
+    background-size: 200% 200%;
+    animation: bg-pan 8s ease infinite;
+}
+
+/* Staggered load utilities */
+.stagger-1 {
+    animation-delay: 100ms;
+}
+
+.stagger-2 {
+    animation-delay: 200ms;
+}
+
+.stagger-3 {
+    animation-delay: 300ms;
+}
+
+.stagger-4 {
+    animation-delay: 400ms;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.9) translateY(10px);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.02) translateY(-2px);
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.animate-pop-in {
+    animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-shake {
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Status Badge Glows */
+.badge-glow-success {
+    box-shadow: 0 0 15px -3px rgba(16, 185, 129, 0.3);
+}
+
+.badge-glow-warning {
+    box-shadow: 0 0 15px -3px rgba(245, 158, 11, 0.3);
+}
+
+.badge-glow-error {
+    box-shadow: 0 0 15px -3px rgba(239, 68, 68, 0.3);
+}
+
+.badge-glow-info {
+    box-shadow: 0 0 15px -3px rgba(139, 92, 246, 0.3);
+}

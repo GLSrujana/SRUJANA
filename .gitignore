@@ -1,0 +1,33 @@
+# .gitignore for .NET and Node.js
+
+# Build folders
+bin/
+obj/
+dist/
+build/
+out/
+
+# Dependency folders
+node_modules/
+packages/
+
+# IDE files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem

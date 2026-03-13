@@ -1,0 +1,357 @@
+<div
+    class="min-h-screen w-full flex bg-neutral-50 dark:bg-neutral-900 relative overflow-x-hidden font-sans text-neutral-900 dark:text-white selection:bg-blue-500 selection:text-white">
+
+    <!-- Abstract Background Blobs -->
+    <div
+        class="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-gradient-to-bl from-blue-400/20 to-blue-500/20 blur-3xl pointer-events-none">
+    </div>
+    <div
+        class="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-blue-400/20 to-blue-400/20 blur-3xl pointer-events-none">
+    </div>
+
+    <!-- Custom Background Imagery Container -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 mix-blend-multiply dark:mix-blend-screen">
+        <div
+            class="absolute inset-0 bg-[url('/images/auth-bg.png')] bg-[length:600px] opacity-[0.15] dark:opacity-[0.22]">
+        </div>
+
+        <!-- Large Logo pattern watermark 1 -->
+        <img src="/images/logo-icon.png"
+            class="absolute top-10 right-[-10%] w-[900px] h-[900px] object-contain opacity-[0.08] dark:opacity-[0.12] -rotate-12 transition-opacity duration-700">
+
+        <!-- Large Logo pattern watermark 2 -->
+        <img src="/images/logo-icon.png"
+            class="absolute top-[40%] left-[-5%] w-[600px] h-[600px] object-contain opacity-[0.08] dark:opacity-[0.12] rotate-12 transition-opacity duration-700">
+    </div>
+
+    <!-- Main Container -->
+    <div
+        class="w-full max-w-7xl mx-auto flex py-6 sm:py-12 px-4 sm:px-6 lg:px-8 relative z-10 flex-col items-center justify-center">
+
+        <!-- Mobile-only logo -->
+        <div class="flex items-center gap-2 mb-8 lg:hidden">
+            <div class="h-10 w-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="w-6 h-6 text-white">
+                    <path fill-rule="evenodd"
+                        d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08z"
+                        clip-rule="evenodd" />
+                </svg>
+            </div>
+            <span class="text-2xl font-bold text-neutral-800 dark:text-neutral-100">EventSure</span>
+        </div>
+
+        <!-- Glassmorphism Card -->
+        <div
+            class="w-full max-w-2xl bg-white/80 dark:bg-black/80 backdrop-blur-xl rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-white/50 dark:border-white/10 p-8 sm:p-12 relative transition-all animate-scale-in">
+
+            <div
+                class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-600 via-yellow-500 to-blue-600 shadow-sm shadow-blue-500/20">
+            </div>
+
+            <!-- Top Title Area -->
+            <div class="mb-10 text-center animate-fade-in-up">
+                <h1
+                    class="text-4xl font-black text-neutral-900 dark:text-white tracking-tight leading-tight outfit-font">
+                    Begin Your <span class="blue-gradient-text">Journey</span></h1>
+                <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400 max-w-md mx-auto font-medium">
+                    Join the premium ecosystem for intelligent event protection and seamless management.</p>
+            </div>
+
+            <!-- Backend Error Alert -->
+            @if (backendError) {
+            <div
+                class="mb-8 rounded-2xl bg-red-50 dark:bg-red-900/10 p-4 border border-red-100 dark:border-red-900/20 flex items-start animate-shake">
+                <div
+                    class="w-8 h-8 rounded-xl bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0 mr-3">
+                    <svg class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <p class="text-xs text-red-700 dark:text-red-400 font-bold leading-relaxed">{{ backendError }}</p>
+            </div>
+            }
+
+            <form class="space-y-6" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Full Name Field -->
+                    <div class="col-span-1 md:col-span-2">
+                        <label for="fullName"
+                            class="block text-sm font-semibold text-neutral-700 dark:text-neutral-200 mb-1.5 flex items-center">
+                            Full Name
+                        </label>
+                        <div class="relative group">
+                            <div
+                                class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-400 dark:text-neutral-500 group-focus-within:text-blue-500 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="w-5 h-5">
+                                    <path
+                                        d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
+                                </svg>
+                            </div>
+                            <input id="fullName" type="text" formControlName="fullName" placeholder="Jane Doe"
+                                class="block w-full pl-10 pr-3 py-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-neutral-50/50 text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white dark:bg-neutral-900 transition-all sm:text-sm shadow-sm"
+                                [ngClass]="{'border-red-400 focus:ring-red-500/50 focus:border-red-500 bg-red-50/30': registerForm.controls.fullName.invalid && registerForm.controls.fullName.touched}">
+                        </div>
+                        <app-form-errors [control]="registerForm.controls.fullName"
+                            fieldName="Full Name"></app-form-errors>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="col-span-1 md:col-span-2">
+                        <label for="email"
+                            class="block text-sm font-semibold text-neutral-700 dark:text-neutral-200 mb-1.5 flex items-center">
+                            Email Address
+                        </label>
+                        <div class="relative group">
+                            <div
+                                class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-400 dark:text-neutral-500 group-focus-within:text-blue-500 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="w-5 h-5">
+                                    <path
+                                        d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
+                                    <path
+                                        d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
+                                </svg>
+                            </div>
+                            <input id="email" type="email" formControlName="email" placeholder="name@company.com"
+                                class="block w-full pl-10 pr-3 py-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-neutral-50/50 text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white dark:bg-neutral-900 transition-all sm:text-sm shadow-sm"
+                                [ngClass]="{'border-red-400 focus:ring-red-500/50 focus:border-red-500 bg-red-50/30': registerForm.controls.email.invalid && registerForm.controls.email.touched}">
+                        </div>
+                        <app-form-errors [control]="registerForm.controls.email" fieldName="Email"></app-form-errors>
+                    </div>
+
+                    <!-- Phone Number Field -->
+                    <div class="col-span-1 md:col-span-2">
+                        <label for="phoneNumber"
+                            class="block text-sm font-semibold text-neutral-700 dark:text-neutral-200 mb-1.5 flex items-center">
+                            Phone Number
+                        </label>
+                        <div class="flex gap-3">
+                            <div class="relative w-32 shrink-0">
+                                <select formControlName="countryCode"
+                                    class="block w-full pl-3 pr-8 py-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-neutral-50/50 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all sm:text-sm appearance-none cursor-pointer">
+                                    <option value="+91">+91 (IN)</option>
+                                    <option value="+1">+1 (US)</option>
+                                    <option value="+44">+44 (UK)</option>
+                                    <option value="+971">+971 (UAE)</option>
+                                    <option value="+61">+61 (AU)</option>
+                                    <option value="+81">+81 (JP)</option>
+                                </select>
+                                <div
+                                    class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-neutral-400">
+                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="relative flex-1 group">
+                                <div
+                                    class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-400 dark:text-neutral-500 group-focus-within:text-blue-500 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                        class="w-5 h-5">
+                                        <path
+                                            d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                    </svg>
+                                </div>
+                                <input id="phoneNumber" type="tel" formControlName="phoneNumber"
+                                    placeholder="9876543210"
+                                    class="block w-full pl-10 pr-3 py-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-neutral-50/50 text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white dark:bg-neutral-900 transition-all sm:text-sm shadow-sm"
+                                    [ngClass]="{'border-red-400 focus:ring-red-500/50 focus:border-red-500 bg-red-50/30': registerForm.controls.phoneNumber.invalid && registerForm.controls.phoneNumber.touched}">
+                            </div>
+                        </div>
+                        <app-form-errors [control]="registerForm.controls.phoneNumber"
+                            fieldName="Phone Number"></app-form-errors>
+                        @if (registerForm.controls.phoneNumber.errors?.['pattern'] &&
+                        registerForm.controls.phoneNumber.touched) {
+                        <p class="mt-1 text-xs text-red-500 font-medium">Please enter a valid 10-digit phone number</p>
+                        }
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="col-span-1 md:col-span-2">
+                        <label for="password"
+                            class="block text-sm font-semibold text-neutral-700 dark:text-neutral-200 mb-1.5"> Password
+                        </label>
+                        <div class="relative group">
+                            <div
+                                class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-400 dark:text-neutral-500 group-focus-within:text-blue-500 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="w-5 h-5">
+                                    <path fill-rule="evenodd"
+                                        d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                                placeholder="Min 8 characters" (keydown)="checkCapsLock($event)"
+                                class="block w-full pl-10 pr-10 py-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-neutral-50/50 text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white dark:bg-neutral-900 transition-all sm:text-sm shadow-sm"
+                                [ngClass]="{'border-red-400 focus:ring-red-500/50 focus:border-red-500 bg-red-50/30': registerForm.controls.password.invalid && registerForm.controls.password.touched}">
+
+                            <button type="button" (click)="togglePasswordVisibility()"
+                                aria-label="Toggle password visibility"
+                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-neutral-400 dark:text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 focus:outline-none">
+                                @if (showPassword) {
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="w-5 h-5">
+                                    <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
+                                    <path fill-rule="evenodd"
+                                        d="M.664 10.59a1.651 1.651 0 010-1.186A10.004 10.004 0 0110 3c4.257 0 7.893 2.66 9.336 6.41.147.381.146.804 0 1.186A10.004 10.004 0 0110 17c-4.257 0-7.893-2.66-9.336-6.41zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                } @else {
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="w-5 h-5">
+                                    <path fill-rule="evenodd"
+                                        d="M3.28 2.22a.75.75 0 00-1.06 1.06l14.5 14.5a.75.75 0 101.06-1.06l-1.745-1.745a10.029 10.029 0 003.3-4.38 1.651 1.651 0 000-1.185A10.004 10.004 0 0010 3a9.97 9.97 0 00-5.345 1.54L3.28 2.22zM10.5 8.444a2.5 2.5 0 00-3.056 3.055l3.056-3.055z"
+                                        clip-rule="evenodd" />
+                                    <path
+                                        d="M11.205 5.024a2.5 2.5 0 00-3.18 3.18l1.325 1.325a4 4 0 015.024 5.024l1.325 1.325a10.029 10.029 0 003.3-4.38 1.651 1.651 0 000-1.185A10.004 10.004 0 0010 3c-1.353 0-2.65.27-3.85.76l1.55 1.55A8.47 8.47 0 0110 4.5a8.47 8.47 0 017 3.5 8.47 8.47 0 01-1.045 2.05l-1.55-1.55z" />
+                                    <path
+                                        d="M5.25 7.75l-1.55-1.55A10.029 10.029 0 00.396 10.58a1.651 1.651 0 000 1.185A10.004 10.004 0 0010 17c1.353 0 2.65-.27 3.85-.76l-1.55-1.55A8.47 8.47 0 0110 15.5a8.47 8.47 0 01-7-3.5 8.47 8.47 0 012.25-4.25z" />
+                                </svg>
+                                }
+                            </button>
+                        </div>
+
+                        <!-- Password Strength Indicator -->
+                        @if (registerForm.controls.password.value && registerForm.controls.password.value.length > 0) {
+                        <div class="mt-2 flex gap-1">
+                            <div class="h-1 flex-1 rounded-full transition-colors duration-300"
+                                [ngClass]="{'bg-red-500': true}"></div>
+                            <div class="h-1 flex-1 rounded-full transition-colors duration-300"
+                                [ngClass]="{'bg-amber-400': passwordStrength === 'medium' || passwordStrength === 'strong', 'bg-neutral-200': passwordStrength === 'weak'}">
+                            </div>
+                            <div class="h-1 flex-1 rounded-full transition-colors duration-300"
+                                [ngClass]="{'bg-blue-500': passwordStrength === 'strong', 'bg-neutral-200': passwordStrength !== 'strong'}">
+                            </div>
+                        </div>
+                        <p
+                            class="text-[10px] text-right mt-1 text-neutral-500 dark:text-neutral-400 font-medium uppercase tracking-wider">
+                            {{ passwordStrength }}
+                        </p>
+                        }
+
+                        @if (capsLockOn) {
+                        <p class="mt-1.5 text-xs text-amber-600 flex items-center font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-3.5 h-3.5 mr-1">
+                                <path fill-rule="evenodd"
+                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Caps Lock is on
+                        </p>
+                        }
+                        <app-form-errors [control]="registerForm.controls.password"
+                            fieldName="Password"></app-form-errors>
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div class="col-span-1 md:col-span-2">
+                        <label for="confirmPassword"
+                            class="block text-sm font-semibold text-neutral-700 dark:text-neutral-200 mb-1.5"> Confirm
+                            Password
+                        </label>
+                        <div class="relative group">
+                            <div
+                                class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-400 dark:text-neutral-500 group-focus-within:text-blue-500 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="w-5 h-5">
+                                    <path fill-rule="evenodd"
+                                        d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input id="confirmPassword" type="password" formControlName="confirmPassword"
+                                placeholder="Repeat your password"
+                                class="block w-full pl-10 pr-10 py-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-neutral-50/50 text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white dark:bg-neutral-900 transition-all sm:text-sm shadow-sm">
+                        </div>
+                        @if (registerForm.errors?.['notSame'] && registerForm.get('confirmPassword')?.touched) {
+                        <p class="mt-1 text-xs text-red-500 font-medium">Passwords do not match</p>
+                        }
+                    </div>
+
+                    <!-- MFA Security Challenge (Solve a Problem) -->
+                    <div class="col-span-1 md:col-span-2 pt-4 border-t border-neutral-100 dark:border-neutral-800">
+                        <div
+                            class="bg-blue-50/50 dark:bg-blue-900/10 p-5 rounded-2xl border border-blue-100/50 dark:border-blue-500/10">
+                            <label
+                                class="block text-sm font-bold text-blue-900 dark:text-blue-300 mb-3 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                                </svg>
+                                Additional Security Challenge
+                            </label>
+
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4 font-medium">To protect your
+                                account from bots, please solve this puzzle:</p>
+
+                            <div class="flex items-center gap-4">
+                                <div class="relative group/q">
+                                    <div
+                                        class="bg-white dark:bg-neutral-950 px-6 py-3 rounded-xl border border-blue-200 dark:border-blue-500/20 font-black text-xl tracking-widest text-blue-600 dark:text-blue-400 select-none shadow-inner">
+                                        {{ securityChallenge.question }}
+                                    </div>
+                                    <button type="button" (click)="refreshChallenge()"
+                                        class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-blue-600 text-white shadow-lg flex items-center justify-center opacity-0 group-hover/q:opacity-100 transition-all hover:scale-110 active:rotate-180 duration-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="flex-1">
+                                    <input type="text" formControlName="mfaAnswer" placeholder="Type answer..."
+                                        class="block w-full px-4 py-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all font-bold text-center">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- End Grid -->
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button type="submit" [disabled]="isLoading"
+                        class="group w-full flex justify-center items-center py-4 px-4 border border-transparent rounded-xl shadow-md text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-70 disabled:cursor-not-allowed transition-all relative overflow-hidden">
+
+                        <span
+                            class="absolute inset-0 w-full h-full bg-white/20 -translate-y-full hover:translate-y-0 transition-transform duration-300 ease-out z-0"></span>
+
+                        @if (isLoading) {
+                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white relative z-10"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                            </circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                            </path>
+                        </svg>
+                        <span class="relative z-10 tracking-wide text-base">Creating account...</span>
+                        } @else {
+                        <span class="relative z-10 tracking-wide text-base">Create Account</span>
+                        }
+                    </button>
+                </div>
+            </form>
+
+            <!-- Bottom link -->
+            <div class="mt-8 pt-6 border-t border-neutral-100/50 text-center">
+                <p class="text-sm text-neutral-500 dark:text-neutral-400">
+                    Already have an account?
+                    <a routerLink="/login" class="font-bold text-blue-600 hover:text-blue-500 transition-colors">
+                        Log in instead
+                    </a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
